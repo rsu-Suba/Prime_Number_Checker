@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>Say "Noice" When We Can Any Num divide 3.</title>
+</head>
+<body bgcolor="#1a1c1c">
+    <div class="canvas">
+        <div class="main">
+            <div class="top">
+                <div class="buttons">
+                    <button onclick="searchmode()" class="clickbutton" id="searchbtn">Search🔍</button>
+                    <button onclick="" class="notclickbutton" id="endlessbtn">👋</button>
+                </div>
+                <div class="toptools">
+                    <div class="searchtools" id="searches">
+                        <form action="#" method="get" id="form">
+                            <input type="nunmber" class="inputnum" step="10" name="usersnum" required><br>
+                            <input type="submit" class="inputbtn" onclick="postnum()" value="🔍"><br>
+                        </form>
+                    </div>
+                    <div class="endlesstools-search" id="endlesses">
+                        <div class="endbuttons">
+                            <button onclick="endlessstart()" class="notclickbutton" id="endstartbtn">Start</button>
+                            <button onclick="endlessstop()" class="notclickbutton" id="endstopbtn">Stop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="calcmain">
+                    <div class="calcspace">
+                        <div class="Searchcalc">
+                            <textarea class="searchcalctext" id="searchcalctext" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+body{
+    transition: 0.8s;
+}
+
+    body text{
+    font-family: 'Inter', sans-serif;
+}
+body button{
+    font-family: 'Inter', sans-serif;
+}
+body input{
+    font-family: 'Inter', sans-serif;
+}
+textarea{
+    font-family: 'Inter', sans-serif;
+}
+
+    .canvas{
+    background-color: #1a1c1c;
+    width: 98%;
+    height: 99%;
+    position: absolute;
+}
+
+.main{
+    background-color: #efe8f8;
+    width: 80vw;
+    height: 80vh;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 40vh;
+    bottom: 30vh;
+    border-radius: 5vh;
+}
+
+.top{
+    width: 100%;
+    height: 20%;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bottom{
+    height: 80%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons{
+    height: 60%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.endlesstools-search{
+    opacity: 0;
+    z-index: 1;
+}
+
+.endlesstools{
+    opacity: 1;
+}
+
+.searchtools-endless{
+    opacity: 0;
+    position: absolute;
+}
+
+.searchtools{
+    opacity: 1;
+    z-index: 2;
+}
+
+.endbuttons button{
+    position:relative;
+    height: 5vh;
+    width: 30%;
+    top:-1.5vh;
+    margin:2.2vh 3.6vh;
+}
+
+button{
+    border: none;
+    background-color: #e4dcef;
+    border-radius: 100vh;
+    position: relative;
+    height: 70%;
+    width: 40%;
+    margin:1.45vh 2.2%;
+}
+
+.clickbutton{
+    box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
+}
+
+.notclickbutton{
+    box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
+}
+
+.toptools{
+    height: 40%;
+    position: relative;
+    text-align: center;
+}
+
+.searchtools{
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.searchtools form{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    bottom: 0;
+    height: 60%;
+    top: 20%;
+}
+
+.searchtools input{
+    margin: 0 5px;
+    border-radius: 100vh;
+    border: none;
+    background-color: #e4dcef;
+    box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
+}
+
+.inputnum{
+    width: 60%;
+}
+
+.searchtools input:active{
+    box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
+}
+
+.calcmain{
+    background-color: e4dcef;
+    position: relative;
+    height: 58.5vh;
+    width: 68.5vw;
+    margin: 0 auto;
+    top: 2.5%;
+    border-radius: 3.5vh;box-shadow:inset #444 0.6vh 0.6vh 1.4vh ,inset #fff -2vh -2vh 3vh;
+}
+
+.calcspace{
+    height: 92%;
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    top:4%;
+    text-align: left;
+}
+
+
+.Searchcalc{
+    height: 100%;
+    width: 100%;
+}
+textarea {
+  resize: none;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  width:100%;
+  height:100%;
+}
+</style>
+<script>
+    
+var searchnum;
+var searchcurrentnum;
+var searchrem;
+var nowsearchtext;
+document.getElementById('form').onsubmit = function (event) {
+        // 再読み込み防止
+        event.preventDefault();
+        // 入力フォームの内容を取得
+        let inputForm = document.getElementById('form').usersnum.value;
+		// 入力内容を画面に出力
+        searchnum = `${inputForm}`;
+        search();
+    }
+
+    function search(){
+        document.getElementById("searchcalctext").innerHTML = ("");
+       for(var i = 2;i <= searchnum;i++){
+        nowsearchtext = document.getElementById("searchcalctext");
+            searchrem = searchnum % i;
+            if (searchrem == 0){
+                if (i == searchnum){
+                    document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + searchnum + " is Prime number.");
+                }
+                else if (i > searchnum || i < searchnum){
+                    
+                document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + i + " = O\n");
+                }
+                return;
+            }
+            else if (searchrem > 0){
+                document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + i + " = X\n");
+            }
+            var selectTextarea = document.getElementById('searchcalctext');
+selectTextarea.scrollTop = selectTextarea.scrollHeight;
+        }
+    }
+
+    function endlessstart(){
+        document.getElementById("searchcalctext").innerHTML = ("");
+        for(var i = 1;;i++){
+        nowsearchtext = document.getElementById("searchcalctext");
+            for(var x = 2;x <= i;x++){
+                searchrem = i % x;
+            if (searchrem == 0){
+                if (x == i){
+                    document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + searchnum + "\r");
+                }
+                else if (x > i || x < i){
+                    return;
+                }
+                return;
+            }
+            else if (searchrem > 0){
+                return;
+            }
+            }
+            var selectTextarea = document.getElementById('searchcalctext');
+selectTextarea.scrollTop = selectTextarea.scrollHeight;
+sleep(500);
+        }
+    }
+
+    function sleep(waitMsec) {
+  var startMsec = new Date();
+ 
+  // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
+  while (new Date() - startMsec < waitMsec);
+}
+
+function searchmode(){
+    document.getElementById("searchbtn").className = "clickbutton";
+    document.getElementById("endlessbtn").className = "notclickbutton";
+    document.getElementById("endlesses").className = "endlesstools-search";
+    document.getElementById("searches").className = "searchtools";
+}
+function endlessmode(){
+    document.getElementById("searchbtn").className = "notclickbutton";
+    document.getElementById("endlessbtn").className = "clickbutton";
+    document.getElementById("endlesses").className = "endlesstools";
+    document.getElementById("searches").className = "searchtools-endless";
+}
+</script>
+</html>
