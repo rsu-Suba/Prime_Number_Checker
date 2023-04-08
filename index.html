@@ -3,26 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width" />
-<title>Say "Noice" When We Can Any Num divide 3.</title>
+<title>Prime Num Checker</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DMNKQHMXSP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DMNKQHMXSP');
+</script>
 <body bgcolor="#1a1c1c">
     <div class="canvas">
         <div class="main">
             <div class="top">
                 <div class="buttons">
                     <button onclick="searchmode()" class="clickbutton" id="searchbtn">Search🔍</button>
-                    <button onclick="" class="notclickbutton" id="endlessbtn">👋</button>
+                    <button onclick="endlessmode()" class="notclickbutton" id="endlessbtn">👋</button>
                 </div>
                 <div class="toptools">
                     <div class="searchtools" id="searches">
                         <form action="#" method="get" id="form">
-                            <input type="nunmber" class="inputnum" step="10" name="usersnum" required><br>
+                            <input type="number" class="inputnum" step="1" name="usersnum" required><br>
                             <input type="submit" class="inputbtn" onclick="postnum()" value="🔍"><br>
                         </form>
                     </div>
                     <div class="endlesstools-search" id="endlesses">
                         <div class="endbuttons">
                             <button onclick="endlessstart()" class="notclickbutton" id="endstartbtn">Start</button>
+                            <button onclick="endlesslimit()" class="notlimitclickbutton" id="endlimitbtn">∞</button>
                             <button onclick="endlessstop()" class="notclickbutton" id="endstopbtn">Stop</button>
                         </div>
                     </div>
@@ -30,10 +40,16 @@
             </div>
             <div class="bottom">
                 <div class="calcmain">
-                    <div class="calcspace">
-                        <div class="Searchcalc">
+                    <div class="calcspace" id="calcspace">
+                        <div class="Searchcalc" style="margin: 0.5vh 3vw 0vh -0.6vw;">
                             <textarea class="searchcalctext" id="searchcalctext" readonly></textarea>
                         </div>
+                        <div class="divisorcalc" style="margin: 0.5vh -0.6vw 0vh 3vw;">
+                            <textarea class="divisortext" id="divisortext" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="endlessspace-search" id="endlessspace">
+                        <textarea class="endlesstext" id="endlesstext" readonly></textarea>
                     </div>
                 </div>
             </div>
@@ -44,6 +60,11 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 body{
     transition: 0.8s;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar-track{
+    opacity: 0;
 }
 
     body text{
@@ -51,12 +72,14 @@ body{
 }
 body button{
     font-family: 'Inter', sans-serif;
+    font-size: 1.9vh;
 }
 body input{
     font-family: 'Inter', sans-serif;
 }
 textarea{
     font-family: 'Inter', sans-serif;
+    font-size: 1.5vh;
 }
 
     .canvas{
@@ -64,6 +87,7 @@ textarea{
     width: 98%;
     height: 99%;
     position: absolute;
+    bottom:3%;
 }
 
 .main{
@@ -125,7 +149,7 @@ textarea{
     height: 5vh;
     width: 30%;
     top:-1.5vh;
-    margin:2.2vh 3.6vh;
+    margin:2.2vh 1.2vh;
 }
 
 button{
@@ -180,6 +204,7 @@ button{
 
 .inputnum{
     width: 60%;
+    padding: 1.5vh;
 }
 
 .searchtools input:active{
@@ -193,7 +218,9 @@ button{
     width: 68.5vw;
     margin: 0 auto;
     top: 2.5%;
-    border-radius: 3.5vh;box-shadow:inset #444 0.6vh 0.6vh 1.4vh ,inset #fff -2vh -2vh 3vh;
+    border-radius: 3.5vh;
+    box-shadow:inset #444 0.6vh 0.6vh 1.4vh ,inset #fff -2vh -2vh 3vh;
+    display: flex;
 }
 
 .calcspace{
@@ -203,19 +230,87 @@ button{
     margin: 0 auto;
     top:4%;
     text-align: left;
+    display: flex;
+}
+
+.calcspace-endless{
+    top: 400%;
+    height: 92%;
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
 }
 
 
-.Searchcalc{
-    height: 100%;
-    width: 100%;
+.calcspace div{
+    height: 51vh;
+    width: 48.5vh;
+    background-color: e4dcef;
+    border-radius: 2vh;
+    box-shadow:#777 0.3vh 0.3vh 0.5vh ,#ddd -0.5vh -0.5vh 0.5vh;
+    padding: 0.8vh;
 }
+
+.endlessspace{
+    position: absolute;
+    height: 86.8%;
+    width: 77.5%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: e4dcef;
+    border-radius: 2vh;
+    box-shadow:#777 0.3vh 0.3vh 0.5vh ,#ddd -0.5vh -0.5vh 0.5vh;
+    padding: 0.8vh;
+}
+
+.endlessspace-search{
+    top: 1000vh;
+    position: absolute;
+    height: 86.8%;
+    width: 77.5%;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: e4dcef;
+    border-radius: 2vh;
+    box-shadow:#777 0.3vh 0.3vh 0.5vh ,#ddd -0.5vh -0.5vh 0.5vh;
+    padding: 0.8vh;
+}
+
 textarea {
   resize: none;
   border: none;
   background-color: rgba(0,0,0,0);
-  width:100%;
-  height:100%;
+  width:96%;
+  height:99.5%;
+}  
+
+.notlimitclickbutton{
+    box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
+    border: none;
+    background-color: #e4dcef;
+    border-radius: 100vh;
+    position: relative;
+    margin:0;
+    height: 5vh !important;
+    width: 5vh !important;
+}
+
+.limitclickbutton{
+    box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
+    border: none;
+    background-color: #e4dcef;
+    border-radius: 100vh;
+    position: relative;
+    margin:0;
+    height: 5vh !important;
+    width: 5vh !important;
 }
 </style>
 <script>
@@ -224,69 +319,180 @@ var searchnum;
 var searchcurrentnum;
 var searchrem;
 var nowsearchtext;
+var nowdivisortext;
+var spnum;
+var isprivate;
+var nowendlesstext;
 document.getElementById('form').onsubmit = function (event) {
-        // 再読み込み防止
         event.preventDefault();
-        // 入力フォームの内容を取得
         let inputForm = document.getElementById('form').usersnum.value;
-		// 入力内容を画面に出力
         searchnum = `${inputForm}`;
         search();
     }
 
     function search(){
-        document.getElementById("searchcalctext").innerHTML = ("");
+        isprivate = false;
+        document.getElementById("searchcalctext").innerHTML = (searchnum + "\n");
+        document.getElementById("divisortext").innerHTML = ("");
        for(var i = 2;i <= searchnum;i++){
         nowsearchtext = document.getElementById("searchcalctext");
+        nowdivisortext = document.getElementById("divisortext");
+        if (isprivate == false){
             searchrem = searchnum % i;
             if (searchrem == 0){
                 if (i == searchnum){
-                    document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + searchnum + " is Prime number.");
+                    nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = X\n");
+                    nowdivisortext.textContent = (nowdivisortext.innerHTML + searchnum + " is Prime number.");
+                    break;
                 }
                 else if (i > searchnum || i < searchnum){
-                    
-                document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + i + " = O\n");
+                    nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = O\n\n");
+                nowdivisortext.textContent = (nowdivisortext.innerHTML + i + "\n");
+                isprivate = true;
+                searchprivate(searchnum / i);
+                break;
                 }
-                return;
             }
             else if (searchrem > 0){
-                document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + i + " = X\n");
+                nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = X\n");
             }
-            var selectTextarea = document.getElementById('searchcalctext');
-selectTextarea.scrollTop = selectTextarea.scrollHeight;
+        }
+        else if (isprivate == true){
+            break;
+        }
+        nowsearchtext.scrollTop = nowsearchtext.scrollHeight;
+        nowdivisortext.scrollTop = nowdivisortext.scrollHeight;
+    }
+}
+
+    function searchprivate(spnum){
+        document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + "\n" + spnum + "\n");
+        for(var i = 2;i <= spnum;i++){
+        nowsearchtext = document.getElementById("searchcalctext");
+        nowdivisortext = document.getElementById("divisortext");
+            searchrem = spnum % i;
+            if (searchrem == 0){
+                if (i == spnum){
+                    nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = O\n");
+                    nowdivisortext.textContent = (nowdivisortext.innerHTML + i + "\n");
+                    isprivate = false;
+                    break;
+                }
+                else if (i > spnum || i < spnum){
+                    nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = O\n\n");
+                    nowdivisortext.textContent = (nowdivisortext.innerHTML + i + "\n");
+                searchprivate(spnum / i);
+                break;
+                }
+            }
+            else if (searchrem > 0){
+                nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = X\n");
+            }
         }
     }
+
+
+    var endsearchrem;
+    var nowendlesstext;
+    var x;
+    var islimit = true;
+    var isbeha = false;
+    var isdupl = false;
 
     function endlessstart(){
-        document.getElementById("searchcalctext").innerHTML = ("");
-        for(var i = 1;;i++){
-        nowsearchtext = document.getElementById("searchcalctext");
-            for(var x = 2;x <= i;x++){
-                searchrem = i % x;
-            if (searchrem == 0){
-                if (x == i){
-                    document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + searchnum + "\r");
-                }
-                else if (x > i || x < i){
-                    return;
-                }
-                return;
+        isbeha = true;
+        if (isdupl == false){
+        document.getElementById("endstartbtn").className = "clickbutton";
+        document.getElementById("endstopbtn").className = "notclickbutton";
+        document.getElementById("endlesstext").innerHTML = ("");
+            if (islimit == true){
+                endlessnowlimit();
             }
-            else if (searchrem > 0){
-                return;
+            else if (islimit == false){
+                endlesswithoutlimit();
             }
-            }
-            var selectTextarea = document.getElementById('searchcalctext');
-selectTextarea.scrollTop = selectTextarea.scrollHeight;
-sleep(500);
+        }
+        else if (isdupl == true){
+            return;
         }
     }
 
-    function sleep(waitMsec) {
-  var startMsec = new Date();
- 
-  // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
-  while (new Date() - startMsec < waitMsec);
+    async function endlessnowlimit(){
+        isdupl = true;
+        for(x = 2;x <= 100;x++){
+            nowendlesstext = document.getElementById("endlesstext");
+            if (isbeha == true){
+                for(var y = 2;y <= x;y++){
+                    endsearchrem = x % y;
+                    if (endsearchrem == 0){
+                        if (y == x){
+                            nowendlesstext.textContent = (nowendlesstext.innerHTML + x + "\n");
+                            await sleep(250);
+                        }
+                        else if (y > x || y < x){
+                            break;
+                        }
+                    }
+                    else if (endsearchrem > 0){
+                    }
+                }
+            }
+            else if (isbeha == false){
+                break;
+            }
+            nowendlesstext.scrollTop = nowendlesstext.scrollHeight;
+        }
+    }
+
+    async function endlesswithoutlimit(){
+        isdupl = true;
+        for(x = 2;;x++){
+            nowendlesstext = document.getElementById("endlesstext");
+            if (isbeha == true){
+                for(var y = 2;y <= x;y++){
+                    endsearchrem = x % y;
+                    if (endsearchrem == 0){
+                        if (y == x){
+                            nowendlesstext.textContent = (nowendlesstext.innerHTML + x + "\n");
+                            await sleep(250);
+                       }
+                        else if (y > x || y < x){
+                           break;
+                       }
+                    }
+                    else if (endsearchrem > 0){
+                    }
+                }
+            }
+            else if (isbeha == false){
+               break;
+            }
+            nowendlesstext.scrollTop = nowendlesstext.scrollHeight;
+        }
+    }
+
+    function endlessstop(){
+        document.getElementById("endstartbtn").className = "notclickbutton";
+        document.getElementById("endstopbtn").className = "clickbutton";
+        isbeha = false;
+        isdupl = false;
+    }
+
+    function endlesslimit(){
+        if (islimit == true){
+            document.getElementById("endlimitbtn").className = "limitclickbutton";
+            islimit = false;
+        }
+        else if (islimit == false){
+            document.getElementById("endlimitbtn").className = "notlimitclickbutton";
+            islimit = true;
+        }
+    }
+
+    function sleep(time) {
+  return new Promise( (resolve) => {
+    setTimeout(resolve, time)
+  })
 }
 
 function searchmode(){
@@ -294,12 +500,20 @@ function searchmode(){
     document.getElementById("endlessbtn").className = "notclickbutton";
     document.getElementById("endlesses").className = "endlesstools-search";
     document.getElementById("searches").className = "searchtools";
+    document.getElementById("calcspace").className = "calcspace";
+    document.getElementById("endlessspace").className = "endlessspace-search";
+    document.getElementById("endstartbtn").className = "notclickbutton";
+    document.getElementById("endstopbtn").className = "notclickbutton";
 }
 function endlessmode(){
     document.getElementById("searchbtn").className = "notclickbutton";
     document.getElementById("endlessbtn").className = "clickbutton";
     document.getElementById("endlesses").className = "endlesstools";
     document.getElementById("searches").className = "searchtools-endless";
+    document.getElementById("calcspace").className = "calcspace-endless";
+    document.getElementById("endlessspace").className = "endlessspace";
+    document.getElementById("endstartbtn").className = "notclickbutton";
+    document.getElementById("endstopbtn").className = "notclickbutton";
 }
 </script>
 </html>
