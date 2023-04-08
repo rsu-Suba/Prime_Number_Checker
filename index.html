@@ -25,7 +25,7 @@
                 <div class="toptools">
                     <div class="searchtools" id="searches">
                         <form action="#" method="get" id="form">
-                            <input type="number" class="inputnum" step="1" min="2" name="usersnum" required><br>
+                            <input type="number" class="inputnum" step="1" min="2" name="usersnum" value="" required><br>
                             <input type="submit" class="inputbtn" onclick="postnum()" value="🔍"><br>
                         </form>
                     </div>
@@ -328,6 +328,8 @@ document.getElementById('form').onsubmit = function (event) {
         event.preventDefault();
         let inputForm = document.getElementById('form').usersnum.value;
         searchnum = `${inputForm}`;
+        spnum = '';
+        var i = 0;
         search();
     }
 
@@ -336,8 +338,7 @@ document.getElementById('form').onsubmit = function (event) {
         isprivate = false;
         document.getElementById("searchcalctext").innerHTML = ("[" + searchnum + "]\n");
         document.getElementById("divisortext").innerHTML = ("[" + searchnum + "]\n\n");
-        await sleep(300);
-        for(var i = 2;i <= searchnum;i++){
+        for(i = 2;i <= searchnum;i++){
         nowsearchtext = document.getElementById("searchcalctext");
         nowdivisortext = document.getElementById("divisortext");
         if (isprivate == false){
@@ -352,7 +353,7 @@ document.getElementById('form').onsubmit = function (event) {
                 searchrem = searchnum % i;
                 if (searchrem == 0){
                     if (i == searchnum){
-                        nowdivisortext.textContent = (nowdivisortext.innerHTML + searchnum + " is Prime number.");
+                        nowdivisortext.textContent = ("[" + searchnum + "]\n\n" + searchnum + " is Prime number.");
                         break;
                     }
                     else if (i > searchnum || i < searchnum){
@@ -375,7 +376,7 @@ document.getElementById('form').onsubmit = function (event) {
                     }
                     else if (searchnum <= 2){
                     }
-                    nowdivisortext.textContent = (nowdivisortext.innerHTML + searchnum + " is Prime number.");
+                    nowdivisortext.textContent = ("[" + searchnum + "]\n\n" + searchnum + " is Prime number.");
                     break;
                 }
             }
@@ -392,11 +393,10 @@ document.getElementById('form').onsubmit = function (event) {
 
     async function searchprivate(spnum){
         document.getElementById('searchcalctext').textContent = (nowsearchtext.innerHTML + "\n[" + spnum + "]\n");
-        for(var i = 2;i <= spnum;i++){
+        for(i = 2;i <= spnum;i++){
         nowsearchtext = document.getElementById("searchcalctext");
         nowdivisortext = document.getElementById("divisortext");
             if (i % 2 !== 0 || i == 2){
-                
                 if (searchnum / 2 < i){
                     overhalf = true;
                 }
@@ -409,8 +409,8 @@ document.getElementById('form').onsubmit = function (event) {
                         if (i == spnum){
                             nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = O\n");
                             nowdivisortext.textContent = (nowdivisortext.innerHTML + i + "\n\nFinish");
-                            await sleep(250);
                             isprivate = false;
+                            await sleep(250);
                             break;
                         }
                         else if (i > spnum || i < spnum){
@@ -432,7 +432,7 @@ document.getElementById('form').onsubmit = function (event) {
                     }
                     else if (searchnum <= 2){
                     }
-                    nowdivisortext.textContent = (nowdivisortext.innerHTML + searchnum + " is Prime number.");
+                    nowdivisortext.textContent = ("[" + searchnum + "]\n\n" + searchnum + " is Prime number.");
                     break;
                 }
             }
@@ -440,8 +440,8 @@ document.getElementById('form').onsubmit = function (event) {
             }
         nowsearchtext.scrollTop = nowsearchtext.scrollHeight;
         nowdivisortext.scrollTop = nowdivisortext.scrollHeight;
-        }
     }
+}
 
 
     var endsearchrem;
