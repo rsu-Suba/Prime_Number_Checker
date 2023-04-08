@@ -20,7 +20,7 @@
             <div class="top">
                 <div class="buttons">
                     <button onclick="searchmode()" class="clickbutton" id="searchbtn">Search🔍</button>
-                    <button onclick="endlessmode()" class="notclickbutton" id="endlessbtn">👋</button>
+                    <button onclick="endlessmode()" class="notclickbutton" id="endlessbtn">Endless👋</button>
                 </div>
                 <div class="toptools">
                     <div class="searchtools" id="searches">
@@ -396,6 +396,8 @@ document.getElementById('form').onsubmit = function (event) {
             }
             else if (i % 2 == 0){
             }
+        nowsearchtext.scrollTop = nowsearchtext.scrollHeight;
+        nowdivisortext.scrollTop = nowdivisortext.scrollHeight;
         }
     }
 
