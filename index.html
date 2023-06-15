@@ -367,6 +367,7 @@ document.getElementById('form').onsubmit = function (event) {
                 }
                 else if (searchrem > 0){
                     nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = X\n");
+                    await sleep(1);
                 }
                 }
                 else if (overhalf == true){
@@ -422,6 +423,7 @@ document.getElementById('form').onsubmit = function (event) {
                     }
                     else if (searchrem > 0){
                         nowsearchtext.textContent = (nowsearchtext.innerHTML + i + " = X\n");
+                        await sleep(1);
                     }
                 }
                 else if (overhalf == true){
