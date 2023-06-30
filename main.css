@@ -45,7 +45,7 @@ textarea{
     height: 80vh;
     position: absolute;
     margin: auto;
-    bottom:5vh;
+    bottom:0;
     right: 0;
     left: 0;
     border-radius: 5vh;
