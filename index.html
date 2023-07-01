@@ -6,6 +6,7 @@
 <title>Prime Num Checker</title>
 </head>
 <link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DMNKQHMXSP"></script>
 <script>
@@ -20,8 +21,8 @@
         <div class="main">
             <div class="top">
                 <div class="buttons">
-                    <button onclick="searchmode()" class="clickbutton" id="searchbtn">Search🔍</button>
-                    <button onclick="endlessmode()" class="notclickbutton" id="endlessbtn">Endless👋</button>
+                    <button onclick="searchmode()" class="clickbutton" id="searchbtn">Search </button>
+                    <button onclick="endlessmode()" class="notclickbutton" id="endlessbtn">Endless </button>
                 </div>
                 <div class="toptools">
                     <div class="searchtools" id="searches">
@@ -50,7 +51,28 @@
                         </div>
                     </div>
                     <div class="endlessspace-search" id="endlessspace">
-                        <textarea class="endlesstext" id="endlesstext" readonly></textarea>
+                        <div class="endlessopt" id="endlessopt">
+                            <div class="endlessrange" id="endlessrange">
+                                <div class="min" id="min">
+                                    <text>Min</text>
+                                    <input type="number" class="endlessmin" id="endlessmin" step="1" min="2" name="endlessmin" value=""><br>
+                                </div>
+                                <div class="max" id="max">
+                                    <text>Max</text>
+                                    <input type="number" class="endlessmax" id="endlessmax" step="1" min="3" name="endlessmax" value=""><br>
+                                </div>
+                            </div>
+                            <div class="endlessexp" id="endlessexp">
+                                <div class="endlessexpwid" id="endlessexpwid">
+                                        <button onclick="endlessexp()" class="endlessexpbtn" id="endlessexpbtn">
+                                            <span class="material-symbols-outlined">ios_share</span>
+                                        </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="endlessarea" id="endlessarea">
+                            <textarea class="endlesstext" id="endlesstext" readonly></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
