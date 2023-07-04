@@ -28,13 +28,15 @@
                     <div class="searchtools" id="searches">
                         <form action="#" method="get" id="form">
                             <input type="number" class="inputnum" step="1" min="2" name="usersnum" value="" required><br>
-                            <input type="submit" class="inputbtn" onclick="" value="🔍"><br>
+                            <div class="inputbtndiv" >
+                                <input type="submit" class="inputbtn" onclick="" value=""><br>
+                            </div>
                         </form>
                     </div>
                     <div class="endlesstools-search" id="endlesses">
                         <div class="endbuttons">
                             <button onclick="endlessstart()" class="notclickbutton" id="endstartbtn">Start</button>
-                            <button onclick="endlesslimit()" class="notlimitclickbutton" id="endlimitbtn">∞</button>
+                            <button onclick="endlesslimit()" class="notlimitclickbutton" id="endlimitbtn"></button>
                             <button onclick="endlessstop()" class="notclickbutton" id="endstopbtn">Stop</button>
                         </div>
                     </div>
@@ -43,10 +45,10 @@
             <div class="bottom">
                 <div class="calcmain">
                     <div class="calcspace" id="calcspace">
-                        <div class="Searchcalc" style="margin: 0.5vh 4% 0vh -0.6vw;">
+                        <div class="Searchcalc" style="margin: 1.75% 4% 0vh -4%;">
                             <textarea class="searchcalctext" id="searchcalctext" readonly></textarea>
                         </div>
-                        <div class="divisorcalc" style="margin: 0.5vh -0.6vw 0vh 4%;">
+                        <div class="divisorcalc" style="margin: 1.75% -4% 0 4%;">
                             <textarea class="divisortext" id="divisortext" readonly></textarea>
                         </div>
                     </div>
@@ -64,9 +66,7 @@
                             </div>
                             <div class="endlessexp" id="endlessexp">
                                 <div class="endlessexpwid" id="endlessexpwid">
-                                        <button onclick="endlessexp()" class="endlessexpbtn" id="endlessexpbtn">
-                                            <span class="material-symbols-outlined">ios_share</span>
-                                        </button>
+                                        <button onclick="endlessexp()" class="endlessexpbtn" id="endlessexpbtn"></button>
                                 </div>
                             </div>
                         </div>

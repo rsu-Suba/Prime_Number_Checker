@@ -1,7 +1,6 @@
 let searchnum = 0;
 let setnum = 0;
 let start;
-let procdiv = false;
 const searchtext = document.getElementById("searchcalctext");
 const divisortext = document.getElementById("divisortext");
 
@@ -10,12 +9,9 @@ document.getElementById('form').onsubmit = function (event) {
     const inputForm = document.getElementById("form").usersnum.value;
     start = performance.now();
     setnum = inputForm;
-    if (procdiv == false){
-        searchtext.textContent = ``;
-        divisortext.textContent = `[${inputForm}]\n\n`;
-        divide(inputForm,0);
-        procdiv = true;
-    }
+    searchtext.textContent = ``;
+    divisortext.textContent = `[${inputForm}]\n\n`;
+    divide(inputForm,0);
 }
 
 async function divide(searchnum){
@@ -35,7 +31,6 @@ async function divide(searchnum){
                 divisortext.textContent += `${searchnum}\n`;
             }
             searchtext.textContent += `\n${searchnum} = O`;
-            procdiv = false;
             const end = performance.now();
             divisortext.textContent += `\nFinish (${(Math.round((end - start) * 100) / 100)}ms)`;
             break;
@@ -43,7 +38,7 @@ async function divide(searchnum){
         if (searchnum % i == 0){
             searchtext.textContent += `\n${i} = O\n\n`;
             divisortext.textContent += `${i}\n`;
-            await sleep(100);
+            await sleep(150);
             divide(searchnum / i);
             break;
         }
@@ -70,15 +65,8 @@ function sleep(time) {
 
 let limit = true;
 let proc = false;
-let endproc = false;
-let n;
+let n = 2;
 let m;
-let min;
-let max;
-let cachemin;
-let cachemax;
-const endlessmin = document.getElementById("endlessmin");
-const endlessmax = document.getElementById("endlessmax");
 const endlesstext = document.getElementById("endlesstext");
 let endlesstextcache = ``;
 
@@ -88,43 +76,15 @@ async function endlessstart(){
         document.getElementById("endstopbtn").className = "notclickbutton";
         document.getElementById("endlesstext").innerHTML = ("");
         if (limit == true){
-            min = 2;
+            n = 2;
+            m = 2;
             proc = true;
             endlesstextcache = ``;
             endlessdivide(0);
         }
         else if (limit == false){
-            console.log(`${min} ${max} ${cachemin} ${cachemax} ${endproc} ${endlessmin.value} ${endlessmax.value}`);
-            if ((Number(endlessmin.value) > Number(endlessmax.value)) && endlessmax.value != ''){
-                endlesstext.textContent = `最大値は最小値以上を入力してください`;
-                n = max;
-                endlessdivide(1);
-                return;
-            }
-            min = n;
-            console.log(n);
-            if (endproc == false){
-                if (endlessmin.value != ""){
-                    min = endlessmin.value;
-                }
-                else if (endlessmin.value == ""){
-                    min = 2;
-                }
-                if (endlessmax.value != ""){
-                    max = endlessmax.value;
-                }
-            }
-            console.log(`${min} ${max} ${cachemin} ${cachemax} ${endproc}`);
-            if ((endlessmin.value != cachemin || endlessmax.value != cachemax) && endproc == true){
-                console.log(`not`);
-                endlesstextcache = ``;
-                min = endlessmin.value;
-                max = endlessmax.value;
-            }
-            console.log(`${min} ${max} ${cachemin} ${cachemax} ${endproc}`);
             endlesstext.textContent = endlesstextcache;
             proc = true;
-            endproc = true;
             endlessdivide(1);
         }
     }
@@ -134,33 +94,24 @@ async function endlessstart(){
 }
 
 async function endlessdivide(mode){
-    if (mode == 1){
-        cachemin = endlessmin.value;
-        cachemax = endlessmax.value;
-    }
-    for (n = min;;n++){
-        if ((mode == 0 && n == 100) || (mode == 1 && n == Number(max) + 1)){
+    for (n;;n++){
+        if (mode == 0 && n == 100){
             document.getElementById("endstartbtn").className = "notclickbutton";
+            n = 2;
+            m = 2;
             proc = false;
-            endproc = false;
             data = 0;
-            endlesstextcache = ``;
             break;
-        }
-        if (n == 1){
-            continue;
         }
         if (n == 2 || n == 3){
             endlesstext.textContent += `${n}\n`;
-            await sleep(25);
+            await sleep(50);
             continue;
         }
         for (m = 2;;m++){
             if (m > Math.sqrt(n)){
-                if (n != 1){
-                    endlesstext.textContent += `${n}\n`;
-                }
-                await sleep(25);
+                endlesstext.textContent += `${n}\n`;
+                await sleep(50);
                 break;
             }
             if (m > 2 && m % 2 == 0){
@@ -182,9 +133,7 @@ async function endlessdivide(mode){
 function endlessstop(){
     if (limit == false){
         proc = false;
-        if (endproc == true){
-            endlesstextcache = endlesstext.textContent;
-        }
+        endlesstextcache = endlesstext.textContent;
         document.getElementById("endstopbtn").className = "clickbutton";
     }
 }
@@ -195,44 +144,13 @@ function endlesslimit(){
             case true:
                 limit = false;
                 document.getElementById("endlimitbtn").className = "limitclickbutton";
-                document.getElementById("endlessopt").className = "endlessopt-on";
-                document.getElementById("endlessarea").className = "endlessarea-on";
-                document.getElementById("endlessexpbtn").className = "endlessexpbtn-on";
                 break;
             case false:
                 limit = true;
                 document.getElementById("endlimitbtn").className = "notlimitclickbutton";
-                document.getElementById("endlessopt").className = "endlessopt";
-                document.getElementById("endlessarea").className = "endlessarea";
-                document.getElementById("endlessexpbtn").className = "endlessexpbtn";
                 break;
         }
     }
-}
-
-async function endlessexp(){
-    if (endlesstext.textContent == '' || endlesstext.textContent == '最大値は最小値以上を入力してください' || limit == true){
-        return;
-    }
-    document.getElementById("endlessexpbtn").className = "endlessexpbtn-on-click";
-    const expblob = new Blob([endlesstext.textContent], {type:"text/plain"});
-    const explink = document.createElement('a');
-    explink.href = URL.createObjectURL(expblob);
-    var date = new Date();
-    let month = date.getMonth();
-    var datetext = `${('0'+(month++)).slice(-2)}-${('0'+date.getDate()).slice(-2)}-${('0'+date.getFullYear()).slice(-2)}-${('0'+date.getHours()).slice(-2)}-${('0'+date.getMinutes()).slice(-2)}-${('0'+date.getSeconds()).slice(-2)}`
-    let expminname = cachemin;
-    let expmaxname = cachemax;
-    if (cachemin == ''){
-        expminname = '2';
-    }
-    if (cachemax == ''){
-        expmaxname = 'endless';
-    }
-    explink.download = `Prime nums ${expminname} to ${expmaxname}  ${datetext}`;
-    explink.click();
-    await sleep(75);
-    document.getElementById("endlessexpbtn").className = "endlessexpbtn-on";
 }
 
 let data = 0;
