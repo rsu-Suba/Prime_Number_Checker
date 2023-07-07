@@ -1,17 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+html, css{
+    touch-action:pan-x,pan-y;
+  }
+
 body{
     overflow: hidden;
+}
+
+select{
+    color: #000;
 }
 
 ::-webkit-scrollbar {
     width: 1.2vmin;
   }
   ::-webkit-scrollbar-track {
-    background: #d0bcf1;
+    background: #a3d3ff;
     border-radius: 2.5vw;
   }
   ::-webkit-scrollbar-thumb {
-    background: #8754bb;
+    background: #54acff;
     border-radius: 2.5vw;
   }
 
@@ -45,7 +53,7 @@ textarea{
 }
 @media screen and (orientation: portrait) {
     .main{
-        background-color: #efe8f8;
+        background-color: #ebf2f7;
         height: 80vh;
         position: absolute;
         margin: auto;
@@ -59,7 +67,7 @@ textarea{
     }
 
     .calcmain{
-        background-color: #e4dcef;
+        background-color: #ebf2f7;
         position: relative;
         height: 93.75%;
         width: 90%;
@@ -81,7 +89,7 @@ textarea{
     .notlimitclickbutton{
         box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
         border: none;
-        background-color: #e4dcef;
+        background-color: #ebf2f7;
         border-radius: 100vh;
         position: relative;
         margin:0;
@@ -93,7 +101,7 @@ textarea{
     .limitclickbutton{
         box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
         border: none;
-        background-color: #e4dcef;
+        background-color: #ebf2f7;
         border-radius: 100vh;
         position: relative;
         margin:0;
@@ -230,7 +238,7 @@ textarea{
 
 @media screen and (orientation:landscape) {
     .main{
-        background-color: #efe8f8;
+        background-color: #ebf2f7;
         height: 90vh;
         position: absolute;
         margin: auto;
@@ -244,7 +252,7 @@ textarea{
     }
 
     .calcmain{
-        background-color: #e4dcef;
+        background-color: #ebf2f7;
         position: relative;
         height: 93.75%;
         width: 90%;
@@ -267,7 +275,7 @@ textarea{
 .notlimitclickbutton{
     box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
     border: none;
-    background-color: #e4dcef;
+    background-color: #ebf2f7;
     border-radius: 100vh;
     position: relative;
     margin:0;
@@ -279,7 +287,7 @@ textarea{
 .limitclickbutton{
     box-shadow:inset #555 0.5vh 0.5vh 0.7vh ,inset #fff -0.6vh -0.6vh 0.4vh;
     border: none;
-    background-color: #e4dcef;
+    background-color: #ebf2f7;
     border-radius: 100vh;
     position: relative;
     margin:0;
@@ -507,7 +515,7 @@ button text{
 
 button{
     border: none;
-    background-color: #e4dcef;
+    background-color: #ebf2f7;
     border-radius: 100vh;
     position: relative;
     height: 70%;
@@ -547,7 +555,7 @@ button{
     width: 9%;
     border-radius: 100vh;
     border: none;
-    background-color: #f2edfa;
+    background-color: #ebf2f7;
     box-shadow: #555 0.5vh 0.5vh 0.6vh , #fff -0.6vh -0.6vh 0.6vh;
 }
 
@@ -611,7 +619,7 @@ button{
 .calcspace div, .calcspace-endless div{
     height: 95.5%;
     width: 39%;
-    background-color: #e4dcef;
+    background-color: #ebf2f7;
     border-radius: 2vh;
     box-shadow:#555 0.6vh 0.6vh 1.2vh,#fff -0.6vh -0.6vh 1.2vh;
     padding: 0.8vh;
@@ -652,7 +660,7 @@ button{
     top: 0;
     bottom: 0;
     margin: auto;
-    background-color: #efe8f8;
+    background-color: #ebf2f7;
     box-shadow: #555 0.2vh 0.2vh 0.4vh , #fff -0.3vh -0.3vh 0.5vh;
     transition: 0.3s;
 }
@@ -667,7 +675,7 @@ button{
     top: 0;
     bottom: 0;
     margin: auto;
-    background-color: #efe8f8;
+    background-color: #ebf2f7;
     box-shadow: #555 0.3vh 0.3vh 0.3vh , #fff -0.6vh -0.6vh 0.6vh;
     transition: 0.4s;
 }
@@ -682,7 +690,7 @@ button{
     top: 0;
     bottom: 0;
     margin: auto;
-    background-color: #efe8f8;
+    background-color: #ebf2f7;
     box-shadow:inset #555 0.3vh 0.3vh 0.5vh ,inset #fff -0.3vh -0.3vh 0.6vh;
     transition: 0.4s;
 }
@@ -719,7 +727,7 @@ bottom: 0;
     height: 25%;
     border-radius: 100vh;
     border: none;
-    background-color: #efe8f8;
+    background-color: #ebf2f7;
     padding: 2.5%;
     box-shadow:inset #555 0.5vh 0.5vh 1vh ,inset #fff -0.8vh -0.8vh 0.4vh;
 }
