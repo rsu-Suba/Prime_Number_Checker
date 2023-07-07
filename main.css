@@ -20,10 +20,21 @@ body{
 }
 body input{
     font-family: 'Inter', sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
 }
 textarea{
     font-family: 'Inter', sans-serif;
     font-size: 1.5vh;
+    resize: none;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    width:37%;
+    height:92.5%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
 }
 
     .canvas{
@@ -35,15 +46,15 @@ textarea{
 @media screen and (orientation: portrait) {
     .main{
         background-color: #efe8f8;
-        height: 160vw;
+        height: 80vh;
         position: absolute;
         margin: auto;
         top: 0;
         bottom:0;
         right: 0;
         left: 0;
-        border-radius: 10vw;
-        aspect-ratio: 40/70;
+        border-radius: 5vh;
+        aspect-ratio: 40/75;
         overflow: hidden;
     }
 
@@ -54,7 +65,7 @@ textarea{
         width: 90%;
         margin: 0 auto;
         top: 2.5%;
-        border-radius: 7vw;
+        border-radius: 3.6vh;
         box-shadow:inset #444 0.6vh 0.6vh 1.4vh ,inset #fff -2vh -2vh 3vh;
         display: flex;
         flex-direction: column;
@@ -64,7 +75,7 @@ textarea{
 
     body button{
         font-family: 'Inter', sans-serif;
-        font-size: 4vw;
+        font-size: 2vh;
     }
 
     .notlimitclickbutton{
@@ -75,8 +86,8 @@ textarea{
         position: relative;
         margin:0;
         vertical-align: middle;
-        height: 8.6vw !important;
-        width: 8.6vw !important;
+        height: 4.7vh !important;
+        width: 4.7vh !important;
     }
     
     .limitclickbutton{
@@ -87,14 +98,14 @@ textarea{
         position: relative;
         margin:0;
         vertical-align: middle;
-        height: 8.6vw !important;
-        width: 8.6vw !important;
+        height: 4.7vh !important;
+        width: 4.7vh !important;
     }
     
 .endlessexpbtn-on:after, .endlessexpbtn-on-click:after{
     font-family: 'Material Symbols Outlined';
     content: '\e6b8';
-    font-size: 5vw;
+    font-size: 2.4vh;
     position: absolute;
     top: calc((85% - 1em)/2);
     left: 0;
@@ -114,7 +125,7 @@ textarea{
 }
 
 .endlessrange text{
-    font-size: 2.8vw;
+    font-size: 1.8vh;
     position: relative;
     left: 6%;
     bottom: 6%;
@@ -123,9 +134,9 @@ textarea{
 #endlimitbtn:after{
     font-family: 'Material Symbols Outlined';
     content: '\eb3d';
-    font-size: 4.6vw;
+    font-size: 2.4vh;
     position: absolute;
-    top: calc((95% - 1em)/2);
+    top: calc((90% - 1em)/2);
     left: 0;
     right: 0;
 }
@@ -146,14 +157,18 @@ textarea{
     position: absolute;
 }
 
-.inputbtndiv:after{
+.inputbtndiv::after{
     font-family: 'Material Symbols Outlined';
     content: '\f800';
-    font-size: 4vw !important;
+    font-size: 2vh !important;
     position: absolute;
-    top: 0.8vw;
+    height: 67.5%;
+    top: 0;
     bottom: 0;
-    right: 1.75vw;
+    right: 0;
+    left: 2%;
+    margin: auto 0;
+    pointer-events: none;
 }
 
 .endlessspace{
@@ -173,8 +188,8 @@ textarea{
     height: 100%;
     position: absolute;
     bottom: 0;
-    border-radius: 4.4vw;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    border-radius: 2vh;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     transition: 0.5s;
 }
 
@@ -183,8 +198,8 @@ textarea{
     height: 70%;
     position: absolute;
     bottom: 0;
-    border-radius: 4.4vw;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    border-radius: 2vh;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     transition: 0.5s;
 }
 
@@ -194,8 +209,8 @@ textarea{
     width: 100%;
     position: absolute;
     top: 0;
-    border-radius: 4.4vw;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    border-radius: 2.4vh;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     opacity: 0;
     transition: 0.3s;
 }
@@ -206,8 +221,8 @@ textarea{
     height: 25%;
     position: absolute;
     top: 0;
-    border-radius: 4.4vw;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    border-radius: 2vh;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     opacity: 1;
     transition: 0.5s;
 }
@@ -216,7 +231,7 @@ textarea{
 @media screen and (orientation:landscape) {
     .main{
         background-color: #efe8f8;
-        height: 95vh;
+        height: 90vh;
         position: absolute;
         margin: auto;
         top: 0;
@@ -262,7 +277,7 @@ textarea{
 }
 
 .limitclickbutton{
-    box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
+    box-shadow:inset #555 0.5vh 0.5vh 0.7vh ,inset #fff -0.6vh -0.6vh 0.4vh;
     border: none;
     background-color: #e4dcef;
     border-radius: 100vh;
@@ -330,14 +345,17 @@ textarea{
     position: absolute;
 }
 
-.inputbtndiv:after{
+.inputbtndiv::after{
     font-family: 'Material Symbols Outlined';
     content: '\f800';
-    font-size: 2.6vh !important;
+    font-size: 2.4vh !important;
     position: absolute;
-    top: 0.8vh;
+    height: 67.5%;
+    top: 0;
     bottom: 0;
-    right: 1vh;
+    right: 0;
+    left: 2%;
+    margin: auto 0;
 }
 
 .endlessspace{
@@ -358,7 +376,7 @@ textarea{
     position: absolute;
     bottom: 0;
     border-radius: 2.4vh;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     transition: 0.5s;
 }
 
@@ -368,7 +386,7 @@ textarea{
     position: absolute;
     bottom: 0;
     border-radius: 2.4vh;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     transition: 0.5s;
 }
 
@@ -379,7 +397,7 @@ textarea{
     position: absolute;
     top: 0;
     border-radius: 2.4vh;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     opacity: 0;
     transition: 0.3s;
 }
@@ -391,7 +409,7 @@ textarea{
     position: absolute;
     top: 0;
     border-radius: 2.4vh;
-    box-shadow:#777 1vw 1vw 1.6vw,#fff -1.2vw -1.2vw 1.6vw;
+    box-shadow:#777 0.6vh 0.6vh 0.8vh,#fff -0.6vh -0.6vh 0.8vh;
     opacity: 1;
     transition: 0.5s;
 }
@@ -520,6 +538,7 @@ button{
     bottom: 0;
     height: 60%;
     top: 20%;
+    right: 1.5%;
 }
 
 .searchtools input, .searchtools-endless input{
@@ -527,8 +546,8 @@ button{
     width: 9%;
     border-radius: 100vh;
     border: none;
-    background-color: #efe8f8;
-    box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
+    background-color: #f2edfa;
+    box-shadow: #555 0.5vh 0.5vh 0.6vh , #fff -0.6vh -0.6vh 0.6vh;
 }
 
 #searchbtn:after{
@@ -547,6 +566,7 @@ button{
 
 .inputnum{
     width: 60% !important;
+    position: relative;
     padding: 4%;
 }
 
@@ -592,7 +612,7 @@ button{
     width: 39%;
     background-color: #e4dcef;
     border-radius: 2vh;
-    box-shadow:#777 0.3vh 0.3vh 0.5vh ,#fff -0.5vh -0.5vh 0.5vh;
+    box-shadow:#555 0.6vh 0.6vh 1.2vh,#fff -0.6vh -0.6vh 1.2vh;
     padding: 0.8vh;
 }
 
@@ -647,7 +667,7 @@ button{
     bottom: 0;
     margin: auto;
     background-color: #efe8f8;
-    box-shadow: #555 0.2vh 0.2vh 0.4vh , #fff -0.3vh -0.3vh 0.5vh;
+    box-shadow: #555 0.3vh 0.3vh 0.3vh , #fff -0.6vh -0.6vh 0.6vh;
     transition: 0.4s;
 }
 
@@ -700,17 +720,16 @@ bottom: 0;
     border: none;
     background-color: #efe8f8;
     padding: 2.5%;
-    box-shadow:inset #555 0.2vh 0.2vh 0.4vh ,inset #fff -0.4vh -0.4vh 0.25vh;
+    box-shadow:inset #555 0.5vh 0.5vh 1vh ,inset #fff -0.8vh -0.8vh 0.4vh;
 }
 
 .endlesstext{
-    margin: 1vh;
+    position: absolute;
+    height: 92.5%;
+    width: 90%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
 }
-
-textarea {
-  resize: none;
-  border: none;
-  background-color: rgba(0,0,0,0);
-  width:90%;
-  height:94%;
-}  

@@ -36,6 +36,7 @@ async function divide(searchnum){
             }
             searchtext.textContent += `\n${searchnum} = O`;
             procdiv = false;
+            document.getElementById("endlessarea").classname = "endlessarea";
             const end = performance.now();
             divisortext.textContent += `\nFinish (${(Math.round((end - start) * 100) / 100)}ms)`;
             break;
