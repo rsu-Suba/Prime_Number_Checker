@@ -95,15 +95,12 @@ async function endlessstart(){
             endlessdivide(0);
         }
         else if (limit == false){
-            console.log(`${min} ${max} ${cachemin} ${cachemax} ${endproc} ${endlessmin.value} ${endlessmax.value}`);
             if ((Number(endlessmin.value) > Number(endlessmax.value)) && endlessmax.value != ''){
                 endlesstext.textContent = `最大値は最小値以上を入力してください`;
-                n = max;
-                endlessdivide(1);
+                document.getElementById("endstartbtn").className = "notclickbutton";
                 return;
             }
             min = n;
-            console.log(n);
             if (endproc == false){
                 if (endlessmin.value != ""){
                     min = endlessmin.value;
@@ -115,14 +112,11 @@ async function endlessstart(){
                     max = endlessmax.value;
                 }
             }
-            console.log(`${min} ${max} ${cachemin} ${cachemax} ${endproc}`);
             if ((endlessmin.value != cachemin || endlessmax.value != cachemax) && endproc == true){
-                console.log(`not`);
                 endlesstextcache = ``;
                 min = endlessmin.value;
                 max = endlessmax.value;
             }
-            console.log(`${min} ${max} ${cachemin} ${cachemax} ${endproc}`);
             endlesstext.textContent = endlesstextcache;
             proc = true;
             endproc = true;

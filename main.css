@@ -356,6 +356,7 @@ textarea{
     right: 0;
     left: 2%;
     margin: auto 0;
+    pointer-events: none;
 }
 
 .endlessspace{
@@ -595,7 +596,7 @@ button{
     width: 92%;
     position: absolute;
     margin:auto;
-    left: -200%;
+    left: -223%;
     bottom: 0;
     top: 0;
     right: 0;
@@ -622,7 +623,7 @@ button{
     width: 86.5%;
     margin: auto;
     top: 0;
-    right: -200%;
+    right: -223%;
     bottom: 0;
     left: 0;
     opacity: 0;
