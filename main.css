@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 html, css{
-    touch-action:pan-x,pan-y;
+    touch-action:none;
   }
 
 body{
     overflow: hidden;
 }
 
-select{
+body * {
     color: #000;
 }
 
