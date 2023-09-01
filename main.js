@@ -2,6 +2,8 @@ let searchnum = 0;
 let setnum = 0;
 let start;
 let procdiv = false;
+let cachei = 0;
+let count = 1;
 const searchtext = document.getElementById("searchcalctext");
 const divisortext = document.getElementById("divisortext");
 
@@ -12,9 +14,11 @@ document.getElementById('form').onsubmit = function (event) {
     setnum = inputForm;
     if (procdiv == false){
         searchtext.textContent = ``;
-        divisortext.textContent = `[${inputForm}]\n\n`;
-        divide(inputForm,0);
+        divisortext.textContent = `[${inputForm}]\n`;
+        cachei = 0;
+        count = 1;
         procdiv = true;
+        divide(inputForm);
     }
 }
 
@@ -25,16 +29,23 @@ async function divide(searchnum){
             continue;
         }
         if (i > Math.sqrt(searchnum)){
-            if (searchnum == 3){
-                searchtext.textContent += `\n2 = X`;
-            }
             if (searchnum == setnum){
-                divisortext.textContent += `${setnum}は素数\n`;
+                divisortext.textContent += `\n${setnum}は素数\n`;
             }
-            else{
-                divisortext.textContent += `${searchnum}\n`;
+            if (i != searchnum){
+                searchtext.textContent += `\n${i} = X`;
             }
             searchtext.textContent += `\n${searchnum} = O`;
+            if (cachei == searchnum){
+                count++;
+                divisortext.textContent += `^${count}\n`;
+            }
+            else if (searchnum != setnum){
+                if (count > 1){
+                    divisortext.textContent += `^${count}`;
+                }
+                divisortext.textContent += `\n${searchnum}\n`;
+            }
             procdiv = false;
             document.getElementById("endlessarea").classname = "endlessarea";
             const end = performance.now();
@@ -43,8 +54,18 @@ async function divide(searchnum){
         }
         if (searchnum % i == 0){
             searchtext.textContent += `\n${i} = O\n\n`;
-            divisortext.textContent += `${i}\n`;
-            await sleep(100);
+            if (cachei == i){
+                count++;
+            }
+            else{
+                if (count > 1){
+                    divisortext.textContent += `^${count}`;
+                }
+                cachei = i;
+                count = 1;
+                divisortext.textContent += `\n${i}`;
+            }
+            await sleep(1);
             divide(searchnum / i);
             break;
         }
