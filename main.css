@@ -15,11 +15,11 @@ body * {
     width: 1.2vmin;
   }
   ::-webkit-scrollbar-track {
-    background: #a3d3ff;
+    background: #9c9c9c;
     border-radius: 2.5vw;
   }
   ::-webkit-scrollbar-thumb {
-    background: #54acff;
+    background: #0cdfee;
     border-radius: 2.5vw;
   }
 
@@ -37,7 +37,7 @@ textarea{
     resize: none;
     border: none;
     background-color: rgba(0,0,0,0);
-    width:37%;
+    width:85%;
     height:92.5%;
     position: absolute;
     margin: auto;
@@ -51,9 +51,26 @@ textarea{
     height: 100%;
     position: absolute;
 }
+
+.backgroundimage{
+    border: none;
+    height: 100%;
+    pointer-events: none;
+    position: fixed;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 0.3s;
+}
+
 @media screen and (orientation: portrait) {
     .main{
-        background-color: #e3f1ff;
+        backdrop-filter: blur(0.8vh);
+        -webkit-backdrop-filter: blur(0.8vh);
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: #444 0.6vh 0.6vh 1.4vh , #fff -2vh -2vh 3vh;
+        border: solid #999 1px;
         height: 80vh;
         position: absolute;
         margin: auto;
@@ -67,7 +84,8 @@ textarea{
     }
 
     .calcmain{
-        background-color: #e3f1ff;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: solid #aaa 1px;
         position: relative;
         height: 93.75%;
         width: 90%;
@@ -89,7 +107,7 @@ textarea{
     .notlimitclickbutton{
         box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
         border: none;
-        background-color: #e3f1ff;
+        background-color: rgba(255, 255, 255, 0.4);
         border-radius: 100vh;
         position: relative;
         margin:0;
@@ -101,7 +119,7 @@ textarea{
     .limitclickbutton{
         box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
         border: none;
-        background-color: #e3f1ff;
+        background-color: rgba(0, 0, 0, 0.1);
         border-radius: 100vh;
         position: relative;
         margin:0;
@@ -193,6 +211,10 @@ textarea{
 
 .endlessarea{
     width: 100%;
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     height: 100%;
     position: absolute;
     bottom: 0;
@@ -202,6 +224,10 @@ textarea{
 }
 
 .endlessarea-on{
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     width: 100%;
     height: 70%;
     position: absolute;
@@ -224,6 +250,10 @@ textarea{
 }
 
 .endlessopt-on{
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     display: flex;
     width: 100%;
     height: 25%;
@@ -238,7 +268,11 @@ textarea{
 
 @media screen and (orientation:landscape) {
     .main{
-        background-color: #e3f1ff;
+        backdrop-filter: blur(0.8vh);
+        -webkit-backdrop-filter: blur(0.8vh);
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: #444 0.6vh 0.6vh 1.4vh , #fff -2vh -2vh 3vh;
+        border: solid #999 1px;
         height: 90vh;
         position: absolute;
         margin: auto;
@@ -252,7 +286,8 @@ textarea{
     }
 
     .calcmain{
-        background-color: #e3f1ff;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: solid #aaa 1px;
         position: relative;
         height: 93.75%;
         width: 90%;
@@ -275,7 +310,7 @@ textarea{
 .notlimitclickbutton{
     box-shadow: #555 0.5vh 0.5vh 0.8vh , #fff -0.6vh -0.6vh 0.5vh;
     border: none;
-    background-color: #e3f1ff;
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 100vh;
     position: relative;
     margin:0;
@@ -287,7 +322,7 @@ textarea{
 .limitclickbutton{
     box-shadow:inset #555 0.5vh 0.5vh 0.7vh ,inset #fff -0.6vh -0.6vh 0.4vh;
     border: none;
-    background-color: #e3f1ff;
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 100vh;
     position: relative;
     margin:0;
@@ -380,6 +415,10 @@ textarea{
 }
 
 .endlessarea{
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -390,6 +429,10 @@ textarea{
 }
 
 .endlessarea-on{
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     width: 100%;
     height: 70%;
     position: absolute;
@@ -412,6 +455,10 @@ textarea{
 }
 
 .endlessopt-on{
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     display: flex;
     width: 100%;
     height: 25%;
@@ -454,7 +501,6 @@ button text{
 }
 
 .endlesstools-search{
-    opacity: 0;
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -515,7 +561,9 @@ button text{
 
 button{
     border: none;
-    background-color: #e3f1ff;
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 100vh;
     position: relative;
     height: 70%;
@@ -526,6 +574,7 @@ button{
 
 .clickbutton{
     box-shadow:inset #555 0.5vh 0.5vh 0.8vh ,inset #fff -0.6vh -0.6vh 0.5vh;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .notclickbutton{
@@ -555,7 +604,7 @@ button{
     width: 9%;
     border-radius: 100vh;
     border: none;
-    background-color: #e3f1ff;
+    background-color: rgba(255, 255, 255, 0.4);
     box-shadow: #555 0.5vh 0.5vh 0.6vh , #fff -0.6vh -0.6vh 0.6vh;
 }
 
@@ -611,7 +660,6 @@ button{
     text-align: left;
     display: flex;
     justify-content: center;
-    opacity: 0;
     transition: 0.6s;
 }
 
@@ -619,7 +667,10 @@ button{
 .calcspace div, .calcspace-endless div{
     height: 95.5%;
     width: 39%;
-    background-color: #e3f1ff;
+    backdrop-filter: blur(0.4vh);
+    -webkit-backdrop-filter: blur(0.4vh);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: solid #888 1px;
     border-radius: 2vh;
     box-shadow:#555 0.6vh 0.6vh 1.2vh,#fff -0.6vh -0.6vh 1.2vh;
     padding: 0.8vh;
@@ -634,7 +685,6 @@ button{
     right: -223%;
     bottom: 0;
     left: 0;
-    opacity: 0;
     transition: 0.6s;
 }
 
@@ -675,7 +725,7 @@ button{
     top: 0;
     bottom: 0;
     margin: auto;
-    background-color: #e3f1ff;
+    background-color: rgba(255, 255, 255, 0.4);
     box-shadow: #555 0.3vh 0.3vh 0.3vh , #fff -0.6vh -0.6vh 0.6vh;
     transition: 0.4s;
 }
@@ -727,7 +777,7 @@ bottom: 0;
     height: 25%;
     border-radius: 100vh;
     border: none;
-    background-color: #e3f1ff;
+    background-color: rgba(255, 255, 255, 0.4);
     padding: 2.5%;
     box-shadow:inset #555 0.5vh 0.5vh 1vh ,inset #fff -0.8vh -0.8vh 0.4vh;
 }
