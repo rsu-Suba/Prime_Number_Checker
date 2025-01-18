@@ -25,7 +25,10 @@ document.getElementById('form').onsubmit = function (event) {
 async function divide(searchnum){
     searchtext.textContent += `[${searchnum}]\n`
     for(let i = 2;;i++){
-        if (i > 2 && i % 2 == 0){
+        if ((i > 2 && i % 2 == 0) ||
+            (i > 3 && i % 3 == 0) ||
+            (i > 5 && i % 5 == 0) ||
+            (i > 7 && i % 7 == 0)){
             continue;
         }
         if (i > Math.sqrt(searchnum)){
@@ -71,7 +74,7 @@ async function divide(searchnum){
         }
         else{
             searchtext.textContent += `\n${i} = X`;
-            if (i < 100 || i % 40 == 1){
+            if (i < 100 || i % 100 == 1){
                 await sleep(1);
             }
         }
@@ -87,8 +90,6 @@ function sleep(time) {
     setTimeout(resolve, time)
   })
 }
-
-
 
 let limit = true;
 let proc = false;
